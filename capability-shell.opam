@@ -1,0 +1,38 @@
+opam-version: "2.0"
+synopsis: "Capability shell"
+description: "Capability shell"
+maintainer: ["Ryan Gibb"]
+authors: ["Ryan Gibb"]
+license: "MIT"
+homepage: "https://github.com/RyanGibb/capability-shell"
+doc: "https://url/to/documentation"
+bug-reports: "https://github.com/RyanGibb/capability-shell/issues"
+depends: [
+  "ocaml" {>= "5.0.0"}
+  "dune" {>= "3.4"}
+  "eio_main" {>= "0.12"}
+  "cmdliner"
+  "fmt"
+  "capnp-rpc-unix" {>= "2.0"}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/RyanGibb/capability-shell.git"
+pin-depends: [
+  # Eio port https://github.com/mirage/capnp-rpc/
+  ["capnp-rpc.dev" "git+https://github.com/mirage/capnp-rpc.git#252fd9b064367270a48d6bc73cbcd8f188f353d9"]
+  ["capnp-rpc-net.dev" "git+https://github.com/mirage/capnp-rpc.git#252fd9b064367270a48d6bc73cbcd8f188f353d9"]
+  ["capnp-rpc-unix.dev" "git+https://github.com/mirage/capnp-rpc.git#252fd9b064367270a48d6bc73cbcd8f188f353d9"]
+]

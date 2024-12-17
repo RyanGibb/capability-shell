@@ -1,0 +1,13 @@
+(executable
+ (name shelld)
+ (modules shelld)
+ (public_name shelld)
+ (package capability-shell)
+ (libraries eio_main cap capnp-rpc-unix mirage-crypto-rng-eio logs.fmt))
+
+(executable
+ (name shell)
+ (modules shell)
+ (public_name shell)
+ (package capability-shell)
+ (libraries cap eio_main capnp-rpc-unix mirage-crypto-rng-eio))
